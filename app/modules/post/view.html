@@ -1,0 +1,20 @@
+<div class="post clearfix">
+	<img ng-src='img/users/{{$ctrl.postObj.postAuthor}}.jpg' class="post-avatar">
+	<div class="post-text">
+		<h3 class="post-author">{{$ctrl.postObj.postAuthor}}</h3>
+		<p class="post-text-p">{{$ctrl.postObj.postText}}</p>
+		<p class="post-date">{{$ctrl.postObj.date | date:'hh:mm dd/MM/yy' }}</p>
+	</div>
+	<div class="post-comments">
+		<comment
+			ng-repeat="comment in $ctrl.postObj.comments | orderBy: 'date'"
+			author = {{comment.commentAuthor}}
+			text = {{comment.commentText}}
+			date = {{comment.date}}
+			post-id = {{comment.postId}}
+		>
+		</comment>
+
+		<add-comment post-id={{$ctrl.postObj._id}} ng-if="$ctrl.isLogined"></add-comment>
+	</div>
+</div>
