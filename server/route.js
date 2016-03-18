@@ -6,6 +6,7 @@ function route(app){
 
 	app.get('/post', (req, res) => {
 		db.Post.find((err, posts) => res.send(posts));
+		
 	});
 
 	app.post('/post', (req, res) => {
